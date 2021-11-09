@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+
+	<insert id="productSave">
+		INSERT INTO product (no, name, price, description, reg_date, product_image, product_thumbnail) 
+			VALUES (seq_product.nextval, #{name}, #{price}, #{description}, default, #{productImage}, #{productThumbnail})
+	</insert>
+	
+	<update id="productModify">
+		UPDATE product
+			SET name=#{name}, price=#{price}, description=#{description}, product_image=#{productImage}, product_thumbnail=#{productThumbnail}
+			WHERE no=#{no}
+	</update>
+	
+	<delete id="productRemove">
+		DELETE FROM product
+			WHERE no=#{no}
+	</delete>
+	
+	<select id="memberList" resultType="com.devseok0414.myapp.model.dto.MemberDTO">
+		SELECT * FROM member ORDER BY id DESC 
+	</select>
+	
+	<select id="memberAddressList" resultType="com.devseok0414.myapp.model.dto.AddressDTO">
+		SELECT * FROM address ORDER BY member_id DESC
+	</select>
+	
+	<select id="memberListCount" resultType="_int">
+		SELECT count(*) FROM member
+	</select>
+	
+	<select id="searchMemberList" resultType="com.devseok0414.myapp.model.dto.MemberDTO">
+		SELECT * FROM member WHERE ${searchSelect} Like '%'||#{searchText}||'%' ORDER BY id DESC
+	</select>
+	
+	<select id="searchMemberAddressList" resultType="com.devseok0414.myapp.model.dto.AddressDTO">
+		SELECT * FROM address a WHERE a.member_id IN (SELECT m.id
+													  FROM member m
+													  WHERE ${searchSelect} Like '%'||#{searchText}||'%') ORDER BY member_id DESC
+	</select>
+	
+	<select id="searchMemberListCount" resultType="_int">
+		SELECT count(*) FROM member WHERE ${searchSelect} Like '%'||#{searchText}||'%'
+	</select>
+	
+	<select id="orderList" resultType="com.devseok0414.myapp.model.dto.OrderDTO">
+		SELECT * FROM member_order ORDER BY no DESC
+	</select>
+	
+	<select id="orderListCount" resultType="_int">
+		SELECT count(*) FROM member_order
+	</select>
+	
+	<select id="searchOrderList" resultType="com.devseok0414.myapp.model.dto.OrderDTO">
+		SELECT * FROM member_order WHERE ${searchSelect} Like '%'||#{searchText}||'%' ORDER BY no DESC
+	</select>
+	
+	<select id="searchOrderListCount" resultType="_int">
+		SELECT count(*) FROM member_order WHERE ${searchSelect} Like '%'||#{searchText}||'%'
+	</select>
+	
+	<select id="selectOrder" resultType="com.devseok0414.myapp.model.dto.OrderDTO">
+		SELECT * FROM member_order WHERE no = #{no}
+	</select>
+	
+	<select id="selectOrderDetailList" resultType="com.devseok0414.myapp.model.dto.OrderDetailDTO">
+		SELECT * FROM order_detail WHERE order_no = #{no}
+	</select>
+	
+	<select id="selectProductName" resultType="string">
+		SELECT name FROM product WHERE no = #{productNo}
+	</select>
+	
+	<update id="modifyOrderStatus">
+		UPDATE member_order SET status = #{status} WHERE no = #{no}
+	</update>
+	
+</mapper>

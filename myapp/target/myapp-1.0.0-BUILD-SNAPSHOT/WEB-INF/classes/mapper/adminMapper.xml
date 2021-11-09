@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+
+	<insert id="productSave">
+		INSERT INTO product (no, name, price, description, reg_date, product_image, product_thumbnail) 
+			VALUES (seq_product.nextval, #{name}, #{price}, #{description}, default, #{productImage}, #{productThumbnail})
+	</insert>
+	
+	<update id="productModify">
+		UPDATE product
+			SET name=#{name}, price=#{price}, description=#{description}, product_image=#{productImage}, product_thumbnail=#{productThumbnail}
+			WHERE no=#{no}
+	</update>
+	
+	<delete id="productRemove">
+		DELETE FROM product
+			WHERE no=#{no}
+	</delete>
+	
+	<!-- <select id="getSelectOne" resultType="com.test.application_test.model.dto.Application_testDTO">
+		select * from member where id = #{id}
+	</select>
+	
+	<update id="setUpdate">
+		update member set password = #{password}, changeDate = #{changeDate} where id = #{id}
+	</update> -->
+	
+</mapper>
