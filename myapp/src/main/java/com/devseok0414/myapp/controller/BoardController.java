@@ -97,7 +97,6 @@ public class BoardController {
 	
 	@RequestMapping(value="/board/write.do", method = RequestMethod.GET)
 	public String write() throws Exception {
-		
 		return "board/write";
 	}
 	
@@ -107,7 +106,6 @@ public class BoardController {
 			@RequestParam(value="content") String content,
 			@RequestParam(value="password") String password,
 			HttpSession session) throws Exception {
-		
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		
 		BoardDTO dto = new BoardDTO();

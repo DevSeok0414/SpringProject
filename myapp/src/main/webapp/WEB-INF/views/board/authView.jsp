@@ -68,6 +68,12 @@
 		var password = document.getElementById('password').value;
 		var boardPassword = ${boardPassword };
 		
+		if (!password || password.trim() == "") {
+			alert("비밀번호를 입력해주세요.");
+		    password.focus();
+		    return false;
+		}
+		
 		if (password != boardPassword) {
 			alert('비밀번호가 일치하지 않습니다.');
 			return;

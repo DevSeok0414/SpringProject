@@ -70,7 +70,7 @@
 				<div class="col-4"></div>
 				<label for="productImage" class="form-label col-1">상품 이미지</label>
 				<div class="col-5">
-					<img src="/thumbnailPath/${dto.productImage}" class="productImage">
+					<img src="/thumbnailPath${dto.productImage}" class="productImage">
 				</div>
 				<div class="col-2"></div>
 			</div>

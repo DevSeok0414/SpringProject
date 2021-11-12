@@ -132,7 +132,7 @@ $(document).ready(function(){
 							</script>
 							
 							<div class="col-2">
-								<img src="/thumbnailPath/${cartList.productImage}" class="productImage" id="productImage" name="productImage">
+								<img src="/thumbnailPath${cartList.productImage}" class="productImage" id="productImage" name="productImage">
 							</div>
 							<div class="col-3">
 								<span id="name">${cartList.name }</span>

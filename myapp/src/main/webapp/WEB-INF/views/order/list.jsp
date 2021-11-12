@@ -141,7 +141,7 @@
 				<div class="col-4"></div>
 				
 				<div class="col-1">
-					<img src="/thumbnailPath/${innerList.productImage}" class="productImage" id="productImage" name="productImage">
+					<img src="/thumbnailPath${innerList.productImage}" class="productImage" id="productImage" name="productImage">
 				</div>
 				
 				<div class="col-2">

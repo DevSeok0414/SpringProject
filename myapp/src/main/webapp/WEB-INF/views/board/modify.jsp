@@ -49,7 +49,7 @@
 			<div class="row" style="margin-bottom: 20px;">
 				<div class="col-4"></div>
 				<div class="col-2" align="right">
-					<button type="submit" class="btn btn-outline-primary">글 수정</button>
+					<button type="button" onclick="modify();" class="btn btn-outline-primary">글 수정</button>
 				</div>
 				<div class="col-2" align="left">
 					<button type="button" onclick="location.href='${path }/board/list.do'" class="btn btn-outline-success">글 목록</button>
@@ -67,4 +67,23 @@
 <%@ include file="../layout/footer.jsp" %>
 
 </body>
+<script type="text/javascript">
+	function modify() {
+		var subject = document.getElementById('subject').value;
+		var content = document.getElementById('content').value;
+		
+		if (!subject || subject.trim() == "") {
+			alert("제목을 입력해주세요.");
+		    subject.focus();
+		    return false;
+		}
+		if (!content || content.trim() == "") {
+			alert("내용을 입력해주세요.");
+		    content.focus();
+		    return false;
+		}
+		
+		document.getElementById('modifyForm').submit();
+	}
+</script>
 </html>

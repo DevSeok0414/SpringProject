@@ -26,7 +26,7 @@
 		
 		<br>
 		
-		<form name="productSaveForm" method="POST" action="${path }/admin/productSave.do" enctype="multipart/form-data">
+		<form name="productSaveForm" id="productSaveForm" method="POST" action="${path }/admin/productSave.do" enctype="multipart/form-data">
 			<div class="row" style="margin-bottom: 10px;">
 				<div class="col-4"></div>
 				<label for="productName" class="col-1 col-form-label">상품 이름</label>
@@ -66,7 +66,7 @@
 			<div class="row" style="margin-bottom: 10px;">
 				<div class="col-5"></div>
 				<div class="col-2" align="right" style="margin-right: -9px;">
-					<button type="submit" class="btn btn-outline-primary">상품 등록</button>
+					<button type="button" onclick="save();" class="btn btn-outline-primary">상품 등록</button>
 				</div>
 				<div class="col-2" align="left">
 					<button type="button" onclick="location.href='${path }/admin/productList.do'" class="btn btn-outline-success">상품 목록</button>
@@ -81,4 +81,30 @@
 <%@ include file="../layout/footer.jsp" %>
 
 </body>
+<script type="text/javascript">
+	function save() {
+		
+		var name = document.getElementById('name').value;
+		var price = document.getElementById('price').value;
+		var description = document.getElementById('description').value;
+		
+		if(!name || name.trim() == ""){
+		    alert("상품 이름를 입력해주세요.");
+		    name.focus();
+		    return false;
+		}
+		if(!price || price.trim() == ""){
+		    alert("상품 가격을 입력해주세요.");
+		    price.focus();
+		    return false;
+		}
+		if(!description || description.trim() == ""){
+		    alert("상품 설명을 입력해주세요.");
+		    description.focus();
+		    return false;
+		}
+		
+		document.getElementById('productSaveForm').submit();
+	}
+</script>
 </html>

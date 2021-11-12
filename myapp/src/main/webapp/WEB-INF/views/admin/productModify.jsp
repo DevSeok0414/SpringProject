@@ -27,7 +27,7 @@
 		
 		<br>
 
-		<form name="productModifyForm" method="POST" action="${path }/admin/productModify.do" enctype="multipart/form-data">
+		<form name="productModifyForm" id="productModifyForm" method="POST" action="${path }/admin/productModify.do" enctype="multipart/form-data">
 			<input type="hidden" name="no" id="no" value="${dto.no }">
 			<div class="row" style="margin-bottom: 10px;">
 				<div class="col-4"></div>
@@ -60,7 +60,7 @@
 				<div class="col-4"></div>
 				<label for="productImage" class="form-label col-1">상품 이미지</label>
 				<div class="col-5">
-					<img src="/thumbnailPath/${dto.productImage}" class="productImage">
+					<img src="/thumbnailPath${dto.productImage}" class="productImage">
 				</div>
 				<div class="col-2"></div>
 			</div>
@@ -77,7 +77,7 @@
 			<div class="row" style="margin-bottom: 10px;">
 				<div class="col-7"></div>
 				<div class="col-2" align="left" style="margin-left: -4px;">
-					<button type="submit" class="btn btn-primary">수정하기</button>
+					<button type="button" onclick="modify();" class="btn btn-primary">수정하기</button>
 				</div>
 				<div class="col-3"></div>
 			</div>
@@ -99,6 +99,31 @@
 
 <%@ include file="../layout/footer.jsp" %>
 
-
 </body>
+<script type="text/javascript">
+	function modify() {
+		
+		var name = document.getElementById('name').value;
+		var price = document.getElementById('price').value;
+		var description = document.getElementById('description').value;
+		
+		if(!name || name.trim() == ""){
+		    alert("상품 이름을 입력해주세요.");
+		    name.focus();
+		    return false;
+		}
+		if(!price || price.trim() == ""){
+		    alert("상품 가격을 입력해주세요.");
+		    price.focus();
+		    return false;
+		}
+		if(!description || description.trim() == ""){
+		    alert("상품 설명을 입력해주세요.");
+			description.focus();
+		    return false;
+		}
+		
+		document.getElementById('productModifyForm').submit();
+	}
+</script>
 </html>

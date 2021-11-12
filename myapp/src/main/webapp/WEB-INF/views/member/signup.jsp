@@ -129,32 +129,37 @@
 		var email = document.getElementById('email').value;
 		var address3 = document.getElementById('address3').value;
 		
-		if(!id){
+		if(!id || id.trim() == ""){
 		    alert("아이디를 입력해주세요.");
-		    focus.id;
+		    id.focus();
 		    return false;
 		}
-		if(!password){
+		if(!password || password.trim() == ""){
 		    alert("비밀번호를 입력해주세요.");
+		    password.focus();
 		    return false;
 		}
-		if(!passwordCheck){
+		if(!passwordCheck || passwordCheck.trim() == ""){
 		    alert("비밀번호 확인을 입력해주세요.");
+		    passwordCheck.focus();
 		    return false;
 		}
-		if(!name){
+		if(!name || name.trim() == ""){
 		    alert("이름을 입력해주세요.");
+		    name.focus();
 		    return false;
 		}
-		if(!phone){
+		if(!phone || phone.trim() == ""){
 		    alert("전화번호를 입력해주세요.");
+			phone.focus();
 		    return false;
 		}
-		if(!email){
+		if(!email || email.trim() == ""){
 		    alert("이메일을 입력해주세요.");
+		    email.focus();
 		    return false;
 		}
-		if(!address3){
+		if(!address3 || address3.trim() == ""){
 		    alert("주소를 검색해주세요.");
 		    return false;
 		}

@@ -84,7 +84,7 @@
 				<div class="col-4"></div>
 				<div class="col-1">이미지</div>
 				<div class="col-3">
-					<img src="/thumbnailPath/${dto.productImage}" class="productImage">
+					<img src="/thumbnailPath${dto.productImage}" class="productImage">
 				</div>
 				<div class="col-4"></div>
 			</div>

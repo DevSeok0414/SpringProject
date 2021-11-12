@@ -69,7 +69,7 @@
 				<c:forEach var="searchList" items="${searchList}" begin="${pageMaker.startIndex }" end="${pageMaker.endIndex }">
 					<div class="row">
 						<div class="col-1" align="center">
-							<a href="${path }/admin/searchOrderListView.do?no=${searchList.no }">
+							<a href="${path }/admin/orderListView.do?no=${searchList.no }">
 								<span><b>${searchList.no }</b></span>
 							</a>
 						</div>
@@ -246,7 +246,7 @@
 		var searchSelect = document.getElementById('searchSelect').value;
 		var searchText = document.getElementById('searchText').value;
 		
-		if (searchSelect == null || searchSelect.trim() == "" || searchText == null || searchText.trim() == "") {
+		if (searchSelect == null || searchSelect.trim() == "" || !searchSelect || searchText == null || searchText.trim() == "" || !searchText) {
 			alert('검색 기능은 검색 항목과 검색어가 설정되어야합니다. ')
 			return;
 		} else {

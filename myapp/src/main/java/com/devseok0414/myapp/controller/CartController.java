@@ -48,8 +48,6 @@ public class CartController {
 		
 		List<CartListDTO> cartList = cartService.cartList(id);
 		
-		System.out.println("cartList = " + cartList);
-		
 		model.addAttribute("cartList", cartList);
 		
 		return "cart/list";

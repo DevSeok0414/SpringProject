@@ -86,6 +86,14 @@
 		$("#subject").removeAttr("disabled");	
 		$("#password").removeAttr("disabled");	
 		
+		var content = document.getElementById('content').value;
+		
+		if (!content || content.trim() == "") {
+			alert("내용을 입력해주세요.");
+		    content.focus();
+		    return false;
+		}
+		
 		document.getElementById('replyWriteForm').submit();
 	}
 </script>

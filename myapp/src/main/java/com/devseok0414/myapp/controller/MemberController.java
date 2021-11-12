@@ -126,9 +126,10 @@ public class MemberController {
 	@RequestMapping(value="/member/myPage.do", method=RequestMethod.GET)
 	public String mypage(HttpSession session, Model model) throws Exception {
 		
-		MemberDTO member = (MemberDTO)session.getAttribute("member");
-		String memberId = member.getId();
+		MemberDTO tempMember = (MemberDTO)session.getAttribute("member");
+		String memberId = tempMember.getId();
 		
+		MemberDTO member = memberService.login(memberId);
 		AddressDTO dto = memberService.selectAddress(memberId);
 		
 		model.addAttribute("member", member);
@@ -171,6 +172,7 @@ public class MemberController {
 		memberDTO.setId(id);
 		memberDTO.setPhone(phone);
 		memberDTO.setEmail(email);
+		
 		memberService.modifyMember(memberDTO);
 		
 		addressDTO.setMemberId(id);

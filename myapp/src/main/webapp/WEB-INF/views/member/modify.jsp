@@ -41,8 +41,8 @@
 				<div class="col-3"></div>
 				<label for="password" class="col-2 col-form-label" style="text-align:center;">비밀번호</label>
 				<div class="col-3">
-					<input type="password" class="form-control" name="password" id="password">
-					<a style="font-size:13px; margin-top: 2px;">비밀번호와 비밀번호 확인을<br>똑같이 입력하시면 비밀번호가 바뀝니다.<br>아무것도 안적으시면 비밀번호는 바뀌지 않습니다.</a>
+					<input type="password" class="form-control" name="password" id="password" required>
+					<a style="font-size:13px; margin-top: 2px;">기존의 비밀번호와 비밀번호 확인을<br>입력하셔야 정보수정이 가능합니다.<br>비밀번호 변경을 원하시면 변경 원하시는 비밀번호를<br>비밀번호와 비밀번호 확인에 동일하게 입력해주세요.</a>
 				</div>
 				<div class="col-4"></div>
 			</div>
@@ -133,24 +133,27 @@
 		var address3 = document.getElementById('address3').value;
 		var hiddenPassword = document.getElementById('hiddenPassword').value;
 		
-		if(!id){
+		if(!id || id.trim() == ""){
 		    alert("아이디를 입력해주세요.");
-		    focus.id;
+		    id.focus();
 		    return false;
 		}
-		if(!name){
+		if(!name || name.trim() == ""){
 		    alert("이름을 입력해주세요.");
+		    name.focus();
 		    return false;
 		}
-		if(!phone){
+		if(!phone || phone.trim() == ""){
 		    alert("전화번호를 입력해주세요.");
+		    phone.focus();
 		    return false;
 		}
-		if(!email){
+		if(!email || email.trim() == ""){
 		    alert("이메일을 입력해주세요.");
+		    email.focus();
 		    return false;
 		}
-		if(!address3){
+		if(!address3 || address3.trim() == ""){
 		    alert("주소를 검색해주세요.");
 		    return false;
 		}
@@ -160,10 +163,11 @@
 		} 
 		if(password == passwordCheck) {
 			if(password == null || password.trim() == "") {
+				alert("비밀번호는 수정하지 않으셨습니다.");
 				$("#id").removeAttr("disabled");	
 				$("#name").removeAttr("disabled");
 				document.getElementById('password').value = hiddenPassword;
-				alert("회원 정보 수정에 성공했습니다. 마이페이지로 이동합니다.")
+				alert("회원 정보 수정에 성공했습니다. 마이페이지로 이동합니다.");
 				document.getElementById('modifyForm').submit();
 			} else {
 				$("#id").removeAttr("disabled");	

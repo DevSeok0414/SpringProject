@@ -43,9 +43,9 @@
 							
 						<div class="col">
 							<div class="card shadow-sm">
-								<p style="text-align: center; width: 200px; height: 200px;">
-								<a href="${path }/product/view.do?no=${list.no}">
-									<img src="/thumbnailPath/${list.productThumbnail}" class="thumbnail">
+								<p style="text-align: center; width: 260px; height: 260px;" align="center">
+								<a href="${path }/product/view.do?no=${list.no}" style="text-align:center;">
+									<img src="/thumbnailPath${list.productThumbnail}" class="thumbnail">
 								</a>
 								</p>
 								<div class="card-body">
@@ -165,7 +165,7 @@
 		var searchSelect = document.getElementById('searchSelect').value;
 		var searchText = document.getElementById('searchText').value;
 		
-		if (searchSelect == null || searchSelect.trim() == "" || searchText == null || searchText.trim() == "") {
+		if (searchSelect == null || searchSelect.trim() == "" || !searchSelect || searchText == null || searchText.trim() == "" || !searchText) {
 			alert('검색 기능은 검색 항목과 검색어가 설정되어야합니다. ')
 			
 			return;

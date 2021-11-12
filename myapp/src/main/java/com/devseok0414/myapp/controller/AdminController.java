@@ -54,7 +54,7 @@ public class AdminController {
 		String fileName = null;
 
 		if (file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
-			// 파일 인풋박스에 첨부된 파일이 없다면(=첨부된 파일이 이름이 없다면)
+			// 파일 인풋박스에 첨부된 파일이 있다면
 
 			fileName = UploadFileUtils.fileUpload(imgUploadPath, file.getOriginalFilename(), file.getBytes(), ymdPath);
 
@@ -88,6 +88,30 @@ public class AdminController {
 		model.addAttribute("pageMaker", pageMaker);
 		
 		return "admin/productList";
+	}
+	
+	@RequestMapping(value="/admin/searchProductList.do", method=RequestMethod.GET)
+	public String searchProductList(
+			@RequestParam(value="pageNumber", required=false, defaultValue="1") int pageNumber,
+			@RequestParam(value="searchSelect") String searchSelect,
+			@RequestParam(value="searchText") String searchText,
+			@ModelAttribute("criteria") Criteria criteria, Model model) throws Exception {
+		
+		criteria.setPageNumber(pageNumber);
+		criteria.setSearchSelect(searchSelect);
+		criteria.setSearchText(searchText);
+		model.addAttribute("searchList", productService.searchListCriteria(criteria));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCriteria(criteria);
+		pageMaker.setTotalRecord(productService.searchListCountCriteria(criteria));
+		
+		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("searchText", searchText);
+		model.addAttribute("pageMaker", pageMaker);
+		
+		
+		return "admin/searchProductList";
+		
 	}
 	
 	@RequestMapping(value="/admin/productListView.do", method=RequestMethod.GET)

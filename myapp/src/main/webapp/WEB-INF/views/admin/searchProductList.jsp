@@ -44,9 +44,9 @@
 						<div class="col">
 							<div class="card shadow-sm">
 								<p style="text-align: center; width: 260px; height: 260px;" align="center">
-								<a href="${path }/product/view.do?no=${list.no}" style="text-align:center;">
-									<img src="/thumbnailPath${searchList.productThumbnail}" class="thumbnail">
-								</a>
+									<a href="${path }/product/view.do?no=${list.no}" style="text-align:center;">
+										<img src="/thumbnailPath${searchList.productThumbnail}" class="thumbnail">
+									</a>
 								</p>
 								<div class="card-body">
 									<h5 class="card-title">${searchList.name}</h5>
@@ -76,7 +76,7 @@
 
 		<br>		
 		
-		<form name="searchForm" id="searchForm" method="POST" action="${path }/product/searchList.do">
+		<form name="searchForm" id="searchForm" method="POST" action="${path }/admin/searchProductList.do">
 		<div class="row box-footer clearfix">
 			<div class="col-5">
 				<ul class="list list-group list-group-horizontal">
@@ -108,48 +108,48 @@
 				  <ul class="pagination">
 				    <c:choose>
 						<c:when test="${(pageMaker.startPage eq 1) && (pageMaker.criteria.pageNumber eq 1)}">
-							<li class="page-item disabled"><a class="page-link" href="${path }/product/searchList.do?pageNumber=1&searchSelect=${searchSelect}&searchText=${searchText }">&laquo;</a></li>
+							<li class="page-item disabled"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=1&searchSelect=${searchSelect}&searchText=${searchText }">&laquo;</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="page-item"><a class="page-link" href="${path }/product/searchList.do?pageNumber=1&searchSelect=${searchSelect}&searchText=${searchText }">&laquo;</a></li>
+							<li class="page-item"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=1&searchSelect=${searchSelect}&searchText=${searchText }">&laquo;</a></li>
 						</c:otherwise>
 					</c:choose>
 					
 					<c:choose>
 						<c:when test="${pageMaker.startPage gt pageMaker.rangeSize}">
-							<li class="page-item"><a class="page-link" href="${path }/product/searchList.do?pageNumber=${pageMaker.startPage-1}&searchSelect=${searchSelect}&searchText=${searchText }">&lt;</a></li>
+							<li class="page-item"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=${pageMaker.startPage-1}&searchSelect=${searchSelect}&searchText=${searchText }">&lt;</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="page-item disabled"><a class="page-link" href="${path }/product/searchList.do?pageNumber=${pageMaker.startPage-1}&searchSelect=${searchSelect}&searchText=${searchText }">&lt;</a></li>
+							<li class="page-item disabled"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=${pageMaker.startPage-1}&searchSelect=${searchSelect}&searchText=${searchText }">&lt;</a></li>
 						</c:otherwise>
 					</c:choose>
 					
 					<c:forEach var="i" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
 						<c:choose>
 							<c:when test="${pageMaker.criteria.pageNumber eq i}">
-								<li class="page-item active"><a class="page-link" href="${path }/product/searchList.do?pageNumber=${i }&searchSelect=${searchSelect}&searchText=${searchText }">${i }</a></li>
+								<li class="page-item active"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=${i }&searchSelect=${searchSelect}&searchText=${searchText }">${i }</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="page-item"><a class="page-link" href="${path }/product/searchList.do?pageNumber=${i }&searchSelect=${searchSelect}&searchText=${searchText }">${i }</a></li>
+								<li class="page-item"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=${i }&searchSelect=${searchSelect}&searchText=${searchText }">${i }</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					
 					<c:choose>
 						<c:when test="${pageMaker.endPage lt pageMaker.totalPage}">
-							<li class="page-item"><a class="page-link" href="${path }/product/searchList.do?pageNumber=${pageMaker.endPage+1}&searchSelect=${searchSelect}&searchText=${searchText }">&gt;</a></li>
+							<li class="page-item"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=${pageMaker.endPage+1}&searchSelect=${searchSelect}&searchText=${searchText }">&gt;</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="page-item disabled"><a class="page-link" href="${path }/product/searchList.do?pageNumber=${pageMaker.endPage+1}&searchSelect=${searchSelect}&searchText=${searchText }">&gt;</a></li>
+							<li class="page-item disabled"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=${pageMaker.endPage+1}&searchSelect=${searchSelect}&searchText=${searchText }">&gt;</a></li>
 						</c:otherwise>
 					</c:choose>
 					
 					<c:choose>
 						<c:when test="${(pageMaker.endPage eq pageMaker.totalPage) && (pageMaker.totalPage eq pageMaker.criteria.pageNumber)}">
-							<li class="page-item disabled"><a class="page-link" href="${path }/product/searchList.do?pageNumber=${pageMaker.totalPage}&searchSelect=${searchSelect}&searchText=${searchText }">&raquo;</a></li>
+							<li class="page-item disabled"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=${pageMaker.totalPage}&searchSelect=${searchSelect}&searchText=${searchText }">&raquo;</a></li>
 						</c:when>
 						<c:otherwise>
-							<li class="page-item"><a class="page-link" href="${path }/product/searchList.do?pageNumber=${pageMaker.totalPage}&searchSelect=${searchSelect}&searchText=${searchText }">&raquo;</a></li>
+							<li class="page-item"><a class="page-link" href="${path }/admin/searchProductList.do?pageNumber=${pageMaker.totalPage}&searchSelect=${searchSelect}&searchText=${searchText }">&raquo;</a></li>
 						</c:otherwise>
 					</c:choose>
 					
@@ -177,6 +177,8 @@
 			
 			return;
 		} else {
+			
+			
 			document.getElementById('searchForm').submit();
 		}
 	}

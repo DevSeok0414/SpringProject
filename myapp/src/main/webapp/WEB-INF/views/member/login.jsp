@@ -26,7 +26,7 @@
 		
 		<br>
 		
-		<form name="loginForm" method="POST" action="${path }/member/login.do">
+		<form name="loginForm" id="loginForm" method="POST" action="${path }/member/login.do">
 			<div class="row" style="margin-bottom: 10px;">
 				<div class="col-4"></div>
 				<label for="id" class="col-1 col-form-label">아이디</label>
@@ -48,7 +48,7 @@
 			<div class="row" style="margin-bottom: 10px;">
 				<div class="col-5"></div>
 				<div class="col-2" align="right" style="margin-right: -14px;margin-left:-10px;">
-					<button type="submit" class="btn btn-outline-primary">로그인</button>
+					<button type="button" onclick="login();" class="btn btn-outline-primary">로그인</button>
 				</div>
 				
 				<div class="col-2">
@@ -70,4 +70,23 @@
 <%@ include file="../layout/footer.jsp" %>
 
 </body>
+<script type="text/javascript">
+	function login() {
+		var id = document.getElementById('id').value;
+		var password = document.getElementById('password').value;
+		
+		if(!id || id.trim() == ""){
+		    alert("아이디를 입력해주세요.");
+		    id.focus();
+		    return false;
+		}
+		if(!password || password.trim() == ""){
+		    alert("비밀번호를 입력해주세요.");
+		    password.focus();
+		    return false;
+		}
+		
+		document.getElementById('loginForm').submit();
+	}
+</script>
 </html>

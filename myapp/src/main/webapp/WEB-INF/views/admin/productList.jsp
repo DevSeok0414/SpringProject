@@ -47,10 +47,10 @@
 							
 						<div class="col">
 							<div class="card shadow-sm">
-								<p style="text-align: center; width: 200px; height: 200px;">
-								<a href="${path }/admin/productListView.do?no=${list.no}">
-									<img src="/thumbnailPath/${list.productThumbnail}" class="thumbnail">
-								</a>
+								<p style="text-align: center; width: 100%; height: 260px;" align="center">
+									<a href="${path }/admin/productListView.do?no=${list.no}" style="text-align:center;">
+										<img src="/thumbnailPath${list.productThumbnail}" class="thumbnail">
+									</a>
 								</p>
 								<div class="card-body">
 									<h5 class="card-title">${list.name}</h5>
@@ -78,11 +78,26 @@
  
 		</div>
 
-		<br>		
-
+		<br>	
+			
+		<form name="searchForm" id="searchForm" method="POST" action="${path }/admin/searchProductList.do">
 		<div class="row box-footer clearfix">
 			<div class="col-5">
-			<!-- 검색기능!! -->
+				<ul class="list list-group list-group-horizontal">
+				  	<li class="list-group-item">
+					  	<select class="form-select" id="searchSelect" name="searchSelect">
+							<option selected>검색 항목</option>
+							<option value="name">상품명</option>
+							<option value="description">상품 설명</option>
+						</select>
+					</li>
+					<li class="list-group-item">
+						<input class="form-control" type="text" id="searchText" name="searchText" value="${searchText }">
+					</li>
+					<li class="list-group-item">
+						<button type="button" class="btn btn-success" onclick="search();">검색</button>
+					</li>
+				</ul>
 			</div>
 			
 			<div class="col-5" style="text-align:center;">
@@ -141,11 +156,27 @@
 			
 			<div class="col-2"></div>
 		</div>
-
+		</form>
 	</div>
 </div>
 
 <%@ include file="../layout/footer.jsp" %>
 
 </body>
+<script type="text/javascript">
+	function search() {
+		var searchSelect = document.getElementById('searchSelect').value;
+		var searchText = document.getElementById('searchText').value;
+		
+		if (searchSelect == null || searchSelect.trim() == "" || !searchSelect || searchText == null || searchText.trim() == "" || !searchText) {
+			alert('검색 기능은 검색 항목과 검색어가 설정되어야합니다. ')
+			
+			return;
+		} else {
+			
+			
+			document.getElementById('searchForm').submit();
+		}
+	}
+</script>
 </html>

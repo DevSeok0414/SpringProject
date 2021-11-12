@@ -205,7 +205,7 @@
 		var searchSelect = document.getElementById('searchSelect').value;
 		var searchText = document.getElementById('searchText').value;
 		
-		if (searchSelect == null || searchSelect.trim() == "" || searchText == null || searchText.trim() == "") {
+		if (searchSelect == null || searchSelect.trim() == "" || !searchSelect || searchText == null || searchText.trim() == "" || !searchText) {
 			alert('검색 기능은 검색 항목과 검색어가 설정되어야합니다. ')
 			return;
 		} else {

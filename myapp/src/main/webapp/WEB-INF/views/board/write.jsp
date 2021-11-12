@@ -15,6 +15,7 @@
 
 <jsp:include page="../layout/header.jsp"  flush="true" />
 
+
 <div class="album py-5 bg-light">
 	<div class="container">
 		<div class="row">
@@ -32,7 +33,7 @@
 				<div class="col-3"></div>
 				<div class="col-1" style="margin-top: 8px;">글 제목</div>
 				<div class="col-6">
-					<input type="text" id="subject" name="subject" class="form-control" required>
+					<input type="text" id="subject" name="subject" class="form-control">
 				</div>
 				<div class="col-2"></div>
 			</div>
@@ -41,7 +42,7 @@
 				<div class="col-3"></div>
 				<div class="col-1" style="margin-top: 8px;">글 내용</div>
 				<div class="col-6">
-					<textarea id="content" name="content" class="form-control" style="height: 300px;" required></textarea>
+					<textarea id="content" name="content" class="form-control" style="height: 300px;"></textarea>
 				</div>
 				<div class="col-2"></div>
 			</div>
@@ -50,24 +51,25 @@
 				<div class="col-3"></div>
 				<div class="col-1" style="margin-top: 8px;">비밀번호</div>
 				<div class="col-6">
-					<input type="password" id="password" name="password" class="form-control" style="width:150px;" required>
+					<input type="password" id="password" name="password" class="form-control" style="width:150px;">
 					<a style="font-size:13px; margin-top: 2px;">작성하신 비밀번호는 답글의 비밀번호와도 같으니 꼭 기억해주세요.</a>
 				</div>
 				<div class="col-2"></div>
 			</div>
-			
+		</form>
+		
 			<div class="row" style="margin-bottom: 20px;">
 				<div class="col-5"></div>
 				<div class="col-2" align="right">
-					<button type="submit" class="btn btn-outline-primary">글 등록</button>
+					<!-- <button type="button" onclick="write();" class="btn btn-outline-primary">글 등록</button> -->
+					<button type="button"  onclick="writeBoard();" class="btn btn-outline-primary">글 등록</button>
 				</div>
 				<div class="col-2" align="left">
 					<button type="button" onclick="location.href='${path }/board/list.do'" class="btn btn-outline-success">글 목록</button>
 				</div>
 				<div class="col-3"></div>
 			</div>
-			
-		</form>
+		
 		
 	</div>
 </div>
@@ -76,4 +78,29 @@
 <%@ include file="../layout/footer.jsp" %>
 
 </body>
+<script type="text/javascript">
+	 function writeBoard() {
+		var subject = document.getElementById('subject').value;
+		var content = document.getElementById('content').value;
+		var password = document.getElementById('password').value;
+		
+		if (!subject || subject.trim() == "") {
+			alert("제목을 입력해주세요.");
+		    subject.focus();
+		    return false;
+		}
+		if (!content || content.trim() == "") {
+			alert("내용을 입력해주세요.");
+		    content.focus();
+		    return false;
+		}
+		if (!password || password.trim() == "") {
+			alert("비밀번호를 입력해주세요.");
+			password.focus();
+			return false;
+		}
+		
+		document.getElementById('writeForm').submit();
+	} 
+</script>
 </html>

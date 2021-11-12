@@ -30,8 +30,12 @@
 	
 	<!-- 업로드된 파일의 저장 위치 지정 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\sj\workspace_spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\myapp\resources"></beans:constructor-arg>
+		<beans:constructor-arg value="/var/lib/tomcat9/webapps/myapp/resources"></beans:constructor-arg>
 	</beans:bean>
+	
+	<!-- <beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\sj\workspace_spring\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\myapp\resources"></beans:constructor-arg>
+	</beans:bean> -->
 	
 	<!-- 일반 파일 업로드 경로 -->
 	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
